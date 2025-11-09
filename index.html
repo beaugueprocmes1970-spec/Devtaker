@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành Trình Biện Chứng: Xây Dựng Xã Hội</title>
+    <!-- Tải Tailwind CSS để sử dụng tiện ích (utilities) cơ bản -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Liên kết đến CSS và JS bên ngoài -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Thanh Trạng Thái -->
+        <div id="status-bar" class="flex justify-between items-center text-sm sm:text-base">
+            <div id="current-rank" class="font-bold">Hạng: Người Tập Sự</div>
+            <div class="flex space-x-4">
+                <div title="Điểm Biện Chứng (Tư duy đổi mới)">Biện Chứng: <span id="dialectic-score" class="font-extrabold">0</span></div>
+                <div title="Điểm Truyền Thống (Sự ổn định)">Truyền Thống: <span id="tradition-score" class="font-extrabold">0</span></div>
+            </div>
+        </div>
+
+        <!-- Vùng Nội Dung Slide -->
+        <div id="slide-container" class="p-8 transition-opacity duration-500 ease-in-out">
+            
+            <!-- Slide 0: Giới Thiệu -->
+            <div id="slide-0" class="slide">
+                <h2 class="text-3xl font-extrabold mb-4 border-b pb-2">Hành Trình Biện Chứng: Xây Dựng Xã Hội</h2>
+                <p class="mb-4 text-gray-700">Chào mừng, người kiến tạo! Bạn là một Công Tước mới được bổ nhiệm, đứng trước nhiệm vụ lãnh đạo một tiểu quốc. Tương lai của tiểu quốc này sẽ phụ thuộc vào các quyết định của bạn trong việc cân bằng giữa **Biện Chứng** (đổi mới, tư duy phản biện) và **Truyền Thống** (ổn định, kinh nghiệm lịch sử).</p>
+                <p class="mb-6 font-semibold text-gray-700">Mỗi quyết định sẽ ảnh hưởng đến điểm số của hai yếu tố này. Hãy bắt đầu hành trình của bạn!</p>
+                <div class="space-y-3">
+                    <p class="text-lg font-bold text-gray-800">Cấp Bậc:</p>
+                    <div class="flex justify-between items-center p-3 bg-gray-100 rounded-lg border border-gray-300">
+                        <span class="font-medium text-blue-600">Người Tập Sự</span>
+                        <span class="text-sm text-gray-600">Bắt đầu</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 1: Quyết Định 1 - Cải cách Đất đai -->
+            <div id="slide-1" class="slide">
+                <h2 class="text-2xl font-bold mb-3">Vòng 1: Cải cách Đất đai</h2>
+                <p class="mb-4 text-gray-700">Một số nông dân yêu cầu cải cách ruộng đất để phân chia lại tài sản công bằng hơn, trong khi giới quý tộc phản đối gay gắt, viện dẫn luật lệ ngàn năm. Bạn sẽ làm gì?</p>
+                <div class="space-y-4 mt-6">
+                    <button id="decide-1-1" onclick="makeDecision(1, 1)" class="w-full primary-btn">
+                        Phân chia lại đất đai ngay lập tức (+2 Biện Chứng, -1 Truyền Thống)
+                    </button>
+                    <button id="decide-1-2" onclick="makeDecision(1, 2)" class="w-full secondary-btn">
+                        Giữ nguyên luật lệ truyền thống, trấn an giới quý tộc (-1 Biện Chứng, +2 Truyền Thống)
+                    </button>
+                </div>
+                <p id="result-1" class="mt-4 text-sm font-medium italic text-gray-600"></p>
+            </div>
+
+            <!-- Slide 2: Quyết Định 2 - Đầu tư Khoa học -->
+            <div id="slide-2" class="slide">
+                <h2 class="text-2xl font-bold mb-3">Vòng 2: Đầu tư Khoa học</h2>
+                <p class="mb-4 text-gray-700">Một nhà khoa học trẻ đề xuất chi một khoản ngân sách lớn để xây dựng một học viện nghiên cứu kỹ thuật mới. Hội đồng bảo thủ cho rằng đó là sự lãng phí không cần thiết.</p>
+                <div class="space-y-4 mt-6">
+                    <button id="decide-2-1" onclick="makeDecision(2, 1)" class="w-full primary-btn">
+                        Cấp vốn lớn cho học viện, bất chấp phản đối (+3 Biện Chứng, -1 Truyền Thống)
+                    </button>
+                    <button id="decide-2-2" onclick="makeDecision(2, 2)" class="w-full secondary-btn">
+                        Chỉ cấp vốn nhỏ, tập trung vào các dự án đã được chứng minh (-2 Biện Chứng, +2 Truyền Thống)
+                    </button>
+                </div>
+                <p id="result-2" class="mt-4 text-sm font-medium italic text-gray-600"></p>
+                <div id="rank-promotion-1" class="mt-6 rank-box hidden"></div>
+            </div>
+            
+            <!-- Slide 3: Quyết Định 3 - Xử lý Khủng hoảng -->
+            <div id="slide-3" class="slide">
+                <h2 class="text-2xl font-bold mb-3">Vòng 3: Xử lý Khủng hoảng</h2>
+                <p class="mb-4 text-gray-700">Một đợt dịch bệnh bùng phát. Giới tu sĩ cho rằng cần làm lễ cầu nguyện theo nghi thức cũ. Các nhà khoa học mới lại đề xuất các biện pháp cách ly và vệ sinh hiện đại.</p>
+                <div class="space-y-4 mt-6">
+                    <button id="decide-3-1" onclick="makeDecision(3, 1)" class="w-full primary-btn">
+                        Thực hiện các biện pháp khoa học, cách ly nghiêm ngặt (+2 Biện Chứng, -2 Truyền Thống)
+                    </button>
+                    <button id="decide-3-2" onclick="makeDecision(3, 2)" class="w-full secondary-btn">
+                        Hỗ trợ các buổi lễ cầu nguyện, đồng thời khuyến khích vệ sinh cơ bản (-1 Biện Chứng, +2 Truyền Thống)
+                    </button>
+                </div>
+                <p id="result-3" class="mt-4 text-sm font-medium italic text-gray-600"></p>
+            </div>
+            
+            <!-- Slide 4: Quyết Định 4 - Chiến lược Liên minh -->
+            <div id="slide-4" class="slide">
+                <h2 class="text-2xl font-bold mb-3">Vòng 4: Chiến lược Liên minh</h2>
+                <p class="mb-4 text-gray-700">Một quốc gia láng giềng mới nổi lên, đề xuất một hiệp ước thương mại và công nghệ mới, nhưng yêu cầu từ bỏ một số nghi lễ truyền thống cũ. Các nước đồng minh truyền thống của bạn phản đối.</p>
+                <div class="space-y-4 mt-6">
+                    <button id="decide-4-1" onclick="makeDecision(4, 1)" class="w-full primary-btn">
+                        Ký hiệp ước mới, chấp nhận thay đổi văn hóa (+3 Biện Chứng, -3 Truyền Thống)
+                    </button>
+                    <button id="decide-4-2" onclick="makeDecision(4, 2)" class="w-full secondary-btn">
+                        Duy trì liên minh truyền thống, từ chối hiệp ước (-2 Biện Chứng, +3 Truyền Thống)
+                    </button>
+                </div>
+                <p id="result-4" class="mt-4 text-sm font-medium italic text-gray-600"></p>
+                <div id="rank-promotion-2" class="mt-6 rank-box hidden"></div>
+            </div>
+
+            <!-- Slide 5: Kết Quả Cuối Cùng -->
+            <div id="slide-5" class="slide">
+                <h2 class="text-3xl font-extrabold mb-6 border-b pb-2">KẾT QUẢ CUỐI CÙNG</h2>
+                <div class="space-y-4 mb-8 p-4 bg-gray-100 rounded-lg border border-gray-300">
+                    <p class="text-xl font-bold text-gray-800">Điểm tổng kết:</p>
+                    <div class="flex justify-around text-center">
+                        <div>
+                            <p class="text-2xl font-extrabold text-blue-700" id="final-dialectic">0</p>
+                            <p class="text-sm text-gray-600">Biện Chứng</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-yellow-700" id="final-tradition">0</p>
+                            <p class="text-sm text-gray-600">Truyền Thống</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">TƯƠNG LAI CỦA BẠN</h3>
+                <p id="final-result-text" class="text-lg font-medium italic text-gray-700 min-h-[100px] p-2 border-l-4 border-amber-500 bg-amber-50 rounded">
+                    <!-- Kết quả cuối cùng sẽ hiển thị ở đây -->
+                </p>
+
+                <button onclick="resetGame()" class="w-full mt-6 reset-btn">
+                    CHƠI LẠI
+                </button>
+            </div>
+
+            <!-- Slide ẩn (Phải luôn có ít nhất 1 slide ở đây) -->
+            <div id="slide-999" class="slide"></div>
+
+        </div>
+
+        <!-- Thanh Điều Hướng -->
+        <div id="navigation" class="flex justify-between p-4 border-t border-gray-300">
+            <button id="prev-btn" class="nav-btn bg-gray-300 hover:bg-gray-400 text-gray-800 disabled:opacity-50">
+                &larr; Quay lại
+            </button>
+            <button id="next-btn" class="nav-btn bg-amber-500 hover:bg-amber-600 text-white disabled:opacity-50">
+                Tiếp tục &rarr;
+            </button>
+        </div>
+    </div>
+    
+    <!-- Liên kết đến JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

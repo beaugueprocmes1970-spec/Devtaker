@@ -1,0 +1,148 @@
+/* --- BIẾN MÀU THEO PHONG CÁCH HỌC THUẬT/CỔ ĐIỂN --- */
+:root {
+    --bg-primary: #f5f5dc; /* Màu Be nhẹ */
+    --bg-secondary: #ffffff; /* Màu nền nội dung */
+    --text-dark: #3e2723; /* Màu nâu đậm (Cà phê) */
+    --text-light: #5d4037; /* Màu nâu nhạt */
+    --accent-blue: #1565c0; /* Xanh đậm (Biện Chứng) */
+    --accent-gold: #fbc02d; /* Vàng đậm (Truyền Thống) */
+    --font-merriweather: 'Merriweather', serif;
+    --font-roboto: 'Roboto', sans-serif;
+}
+
+/* --- GLOBAL STYLES --- */
+body {
+    font-family: var(--font-roboto);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #e0e0c0 100%); /* Nền be ấm */
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: background 0.5s;
+}
+
+#game-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--bg-secondary);
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 1px solid #d7ccc8; /* Viền màu đất */
+    overflow: hidden;
+}
+
+/* --- THANH TRẠNG THÁI --- */
+#status-bar {
+    background-color: var(--text-dark); /* Nâu đậm */
+    color: #fff;
+    padding: 1rem 2rem;
+}
+
+/* --- NỘI DUNG SLIDE --- */
+#slide-container {
+    position: relative;
+    overflow: hidden;
+    min-height: 450px;
+}
+
+.slide {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    width: 100%;
+    font-family: var(--font-roboto);
+}
+
+.slide.active {
+    opacity: 1;
+    position: relative;
+}
+
+h2, h3 {
+    color: var(--text-dark);
+    font-family: var(--font-merriweather);
+}
+
+h2 {
+    border-color: #d7ccc8 !important;
+}
+
+/* --- NÚT BẤM (Primary & Secondary) --- */
+.primary-btn {
+    background-color: var(--accent-blue);
+    color: white;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s, transform 0.1s;
+}
+.primary-btn:hover:not(:disabled) {
+    background-color: #0d47a1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.secondary-btn {
+    background-color: var(--accent-gold);
+    color: var(--text-dark);
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s, transform 0.1s;
+}
+.secondary-btn:hover:not(:disabled) {
+    background-color: #ffb300;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* --- HỘP THĂNG CẤP (Rank Box) --- */
+.rank-box {
+    padding: 1rem;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Các trạng thái Thăng cấp/Không thăng cấp */
+.rank-success {
+    background-color: #e8f5e9; /* Xanh lá nhạt */
+    border-color: #43a047; /* Xanh lá đậm */
+    color: #1b5e20;
+}
+.rank-failure {
+    background-color: #ffebee; /* Đỏ nhạt */
+    border-color: #e53935; /* Đỏ đậm */
+    color: #b71c1c;
+}
+
+/* --- NÚT ĐIỀU HƯỚNG & RESET --- */
+.nav-btn {
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px; /* rounded-full */
+}
+
+.reset-btn {
+    background-color: var(--danger-color, #ef4444);
+    color: white;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s;
+}
+.reset-btn:hover {
+    background-color: #dc2626;
+}
