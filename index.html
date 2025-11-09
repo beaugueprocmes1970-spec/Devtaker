@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Làn Sóng Stream</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>🌊 Quản Lý Làn Sóng Stream</h1>
+    <p>Mục tiêu: Giữ Nhịp độ Stream (Tempo) ở mức 40-60 trong 60 giây.</p>
+
+    <div id="game-area">
+        <div id="status-panel">
+            <p>⏱️ Thời gian còn lại: <span id="timer-display">60</span>s</p>
+            <p>🎶 Nhịp độ (Tempo): <span id="tempo-display">50</span></p>
+            <p>📈 Chỉ số Phản hồi: <span id="feedback-rating">0</span></p>
+            <div class="bar-container">
+                <div id="tempo-bar" class="bar"></div>
+            </div>
+            <p id="game-message" class="info">Sẵn sàng. Nhấn BẮT ĐẦU.</p>
+        </div>
+        
+        <div id="interaction-panel">
+            <h2>Hành động của Streamer:</h2>
+            <button id="stabilize-btn" onclick="handleAction('stabilize')" disabled>Ổn định Nhịp độ (-5 Phản hồi)</button>
+            <button id="amplify-btn" onclick="handleAction('amplify')" disabled>Khuếch đại Làn sóng (+10 Phản hồi)</button>
+            
+            <hr>
+            
+            <h2>Tương tác với Khán giả (Mô phỏng Chat):</h2>
+            <button id="audience-interaction-btn" onclick="receiveAudienceFeedback()" disabled>
+                NHẬN PHẢN HỒI KHÁN GIẢ
+            </button>
+            <div id="feedback-log"></div>
+        </div>
+    </div>
+    
+    <button id="start-btn" onclick="startGame()">BẮT ĐẦU</button>
+
+    <script src="game.js"></script>
+</body>
+</html>
